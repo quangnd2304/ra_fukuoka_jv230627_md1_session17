@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreach</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 3, 5, 7, 9];
+        let a = 10;
+        // Duyệt các phần tủ của mảng và in ra giá trị các phần tử
+        arr.forEach(function (element, index, currentArray) {
+            console.log("Phần tử đang duyệt--->", element);
+            console.log("Chỉ số đang duyệt--->", index);
+            console.log("Mảng đang duyệt--->", currentArray);
+            console.log("Giá trị truyền vào hàm--->", a);
+        }, a);
+        //Duyệt mảng arr và in ra các phần tử của mảng
+        arr.forEach(function (element) {
+            console.log(element);
+        })
+        //Duyệt mảng arr và tính tổng các phần tử của mảng (arrow function)
+        let total = 0;
+        arr.forEach((element) => {
+            total += element;
+        })
+
+        console.log("Tổng:", total);
+    </script>
+</body>
+
+</html>

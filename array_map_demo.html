@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+</head>
+
+<body>
+    <script>
+        let oldArr = [1, 3, 5, 7, 9];
+        //Tạo mảng mới có các phần tử bằng 2 lần mảng cũ
+        let newArr = oldArr.map((element) => element * 2);
+        console.log("New Array--->", newArr);
+        //Tạo mảng mới có các phần tử có giá trị lớn 5
+        let arr1 = oldArr.map((element) => {
+            if (element > 5) {
+                return element;
+            }
+        })
+        console.log("arr1--->", arr1);
+    </script>
+</body>
+
+</html>

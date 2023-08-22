@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+
+<body>
+    <script>
+        // Lưu biến a = 10 vào session storage với key là a
+        let a = 10;
+        sessionStorage.setItem("a", a);
+        //Lưu mảng vào session storage với key là array
+        let arr = [2, 4, 6, 8];
+        sessionStorage.setItem("array", JSON.stringify(arr));
+        //Lấy dữ liệu array từ sessionStorage
+        let arrGet = JSON.parse(sessionStorage.getItem("array"));
+        console.log("ARRAY GET--->", arrGet);
+        //Xóa a trong sessionStorage
+        sessionStorage.removeItem("a");
+        //Xóa tất cả dữ liệu trong sessionStorage
+        sessionStorage.clear();
+    </script>
+</body>
+
+</html>

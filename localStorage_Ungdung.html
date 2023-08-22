@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localstorage - Ứng dụng</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="bookId">Book Id</label>
+        <input type="text" name="bookId" id="bookId" /><br>
+        <label for="bookName">Book Name</label>
+        <input type="text" name="bookName" id="bookName" /><br>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" /><br>
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" /><br>
+        <button id="btnsave">Save</button>
+        <button id="btnLocalStorage">LocalStorage</button>
+        <button id="btnDisplay">Display</button>
+    </form>
+    <script>
+        //Coi như trong localStorage có 1 item Key là arrBook và giá trị là mảng sách mà chúng ta làm việc
+        //1. Lấy dữ liệu arrBook trong localStorage
+        let arrBook = JSON.parse(localStorage.getItem("arrBook")) || [];
+        //2. Tạo các function thực hiện các chức năng theo yêu cầu
+        function save() {
+            //1. Lấy dữ liệu từ các ô input
+            let bookId = document.getElementById("bookId").value;
+            let bookName = document.getElementById("bookName").value;
+            let price = document.getElementById("price").value;
+            let author = document.getElementById("author").value;
+            let bookNew = { bookId, bookName, price, author }
+            //2. lưu book vào arrBook
+            arrBook.push(bookNew);
+        }
+        let btnSave = document.getElementById("btnsave");
+        btnSave.addEventListener("click", function (event) {
+            //Chan su kien mac dinh submit cua form(khong bi reload lai trang)
+            event.preventDefault();
+            save();
+            console.log(arrBook);
+        })
+        function setDataToLocal() {
+            //1. sử dụng setItem lưu dữ liệu vào localStorage
+            localStorage.setItem("arrBook", JSON.stringify(arrBook));
+        }
+        let btnLocalStorage = document.getElementById("btnLocalStorage");
+        btnLocalStorage.addEventListener("click", function (event) {
+            event.preventDefault();
+            setDataToLocal();
+        })
+        function getDataFromLocal() {
+            //1. Sử dụng getItem lấy dữ liệu từ localStorage theo key arrBook
+            let arrBookGet = JSON.parse(localStorage.getItem("arrBook"));
+            //2. Hiển thị ra console
+            console.log("arrBook--->", arrBookGet);
+        }
+        let btnDisplay = document.getElementById("btnDisplay");
+        btnDisplay.addEventListener("click", (event) => {
+            event.preventDefault();
+            getDataFromLocal();
+        })
+        /*
+            1. Tạo form nhập thông tin sách gồm các thông tin: mã sách, tên sách, giá, tác giả
+            2. Form gồm các input nhập thông tin và các button: Lưu, LocalStorage, Display             
+            3. Click vào Lưu: thực hiện lưu thông tin sách vào mảng
+            4. Click vào LocalStorage thì thực hiện lưu mảng sách vào localStorage
+            5. Click vào Display thì lấy dữ liệu từ localStorage ra và in vào màn hình console
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+
+<body>
+    <script>
+        // 1. Thêm dữ liệu vào localStorage: setItem("Key",Value)
+        //- Kiểu primitive: Thêm giá trị 5 vào localstorage với key là number1
+        localStorage.setItem("number1", 5);
+        //Thêm giá trị true vào localStorage với key là check
+        localStorage.setItem("check", true);
+        //Thêm giá trị false vào localStorage với key là check
+        localStorage.setItem("check", false);
+        //-Kiểu reference: Thêm một đối tượng sinh viên vào localStorage với key là student
+        let student = { "studentId": "SV001", "studentName": "Nguyễn Văn A", "age": 20 };
+        //JSON.stringify(student): Chuyển kiểu dữ liệu đối tượng sang JSON
+        localStorage.setItem("student", JSON.stringify(student));
+        //Lưu mảng vào localStorage với tên là arr
+        let arr = [4, 7, 2, 9];
+        localStorage.setItem("arr", JSON.stringify(arr));
+        //2. Lấy dữ liệu từ localStorage: getItem("Key"): trả ra Value của key trong localStorage
+        //Lấy giá trị key là number1 trong localStorage
+        let number = localStorage.getItem("number1");
+        console.log("Number --->", number);
+        //Lấy giá trị key là check trong localStorage
+        console.log("Check--->", localStorage.getItem("check"));
+        //Lấy giá trị key là student trong localStorage: JSON.parse(json) -> chuyển tử JSON sang object
+        //localStorage.getItem("student"): JSON
+        //JSON->object: JSON.parse
+        let studentInfo = JSON.parse(localStorage.getItem("student"));
+        console.log("Student Info--->", studentInfo);
+        //Lấy giá trị key là arr trong localStorage
+        let arrGet = JSON.parse(localStorage.getItem("arr"));
+        console.log("Array Get--->", arrGet);
+        //3. Xóa dữ liệu trong localStorage: removeItem("Key")
+        //Xóa dữ liệu key là number1 trong localStorage
+        localStorage.removeItem("number1");
+        localStorage.removeItem("arr");
+        //4. Xóa tất cả dữ liệu trong localStorage: clear()
+        localStorage.clear();
+
+
+    </script>
+</body>
+
+</html>
